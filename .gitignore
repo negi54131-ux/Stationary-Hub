@@ -1,5 +1,8 @@
 node_modules/
 .env
 server/db/stationery.db
+server/db/stationery.db-*
+public/uploads/
+.playwright-mcp/
 *.log
 .DS_Store
