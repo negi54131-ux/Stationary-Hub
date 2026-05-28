@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: Stationary Shop
+    env: node
+    plan: free
+    repo: https://github.com/REPLACE_WITH_YOUR_USER/REPLACE_WITH_REPO
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        sync: true
+    autoDeploy: true
+    healthCheckPath: /
+
+databases:
+  - name: stationery-db
+    plan: starter
+    engine: postgres
+    version: latest

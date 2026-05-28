@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Track Stationery Hub orders in real time" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Track Order | Stationery Hub" />
+    <meta property="og:description" content="Track Stationery Hub orders in real time" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Track Order | Stationery Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=General+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="enhanced-stationery.css?v=20260408a" />
+</head>
+
+<body>
+    <div class="utility-bar">
+        <div>Track live shipping status, invoices, and delivery slots.</div>
+        <div class="utility-links">
+            <a href="/support">Need help?</a>
+            <a href="/specialist">Talk to a specialist</a>
+            <a href="tel:+917454969148">Call us</a>
+        </div>
+    </div>
+
+    <header class="topbar">
+        <div class="brand mega-brand">
+            <span class="brand-pill">EST. 2026</span>
+            <span class="brand-name">Stationery Hub</span>
+        </div>
+        <nav class="primary-nav mega-nav">
+            <a href="/">Home</a>
+            <a href="/shop">Shop</a>
+            <a href="/bundles">Bundles</a>
+            <a href="/categories">Categories</a>
+            <a href="/stories">Stories</a>
+            <a href="/support">Support</a>
+        </nav>
+        <div class="search mega-search">
+            <input id="search-input" type="search" placeholder="Search orders or SKUs" />
+            <button id="search-btn">Search</button>
+        </div>
+        <div class="actions mega-actions">
+            <a class="ghost" href="/login">Login</a>
+            <a class="ghost" href="/register">Register</a>
+            <button id="cart-toggle">Cart <span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div>
+                <p class="eyebrow">Order tracking</p>
+                <h1>Check any shipment or bulk project in seconds.</h1>
+                <p class="subhead">Enter your Stationery Hub Order ID to get live status, payment info, and the
+                    concierge assigned to it.</p>
+                <div class="hero-actions">
+                    <button class="primary" data-scroll="#tracker">Track now</button>
+                    <button class="ghost" data-scroll="#timeline">View shipping timelines</button>
+                </div>
+                <ul class="hero-points">
+                    <li>Live courier updates</li>
+                    <li>Bulk fulfillment milestones</li>
+                    <li>Auto email + WhatsApp alerts</li>
+                </ul>
+            </div>
+            <div class="hero-card">
+                <p class="pill">Sample status</p>
+                <h3>ORD-8HZ2</h3>
+                <p>Out for delivery · DHL Surface</p>
+                <p class="muted">ETA: Tomorrow, 1-3 PM</p>
+                <button class="primary" data-scroll="#tracker">Track another order</button>
+            </div>
+        </section>
+
+        <section class="services reveal" id="tracker">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Live tracker</p>
+                    <h2>Enter your Order ID</h2>
+                </div>
+            </div>
+            <div class="services-grid">
+                <article>
+                    <h3>Track status</h3>
+                    <form id="track-form" class="stacked">
+                        <label>Order ID<input type="text" name="order" placeholder="ORD-XXXX" required /></label>
+                        <button class="primary" type="submit">Check status</button>
+                    </form>
+                    <div id="track-result" class="track-result" aria-live="polite"></div>
+                </article>
+                <article>
+                    <h3>Need proof of delivery?</h3>
+                    <p>Request signed PODs, invoice copies, or photos after delivery.</p>
+                    <button class="ghost" data-scroll="#supporting">Request documents</button>
+                </article>
+                <article>
+                    <h3>Delayed shipment?</h3>
+                    <p>Escalate directly to our operations desk for route corrections.</p>
+                    <a class="ghost" href="mailto:ops@stationeryhub.in">Escalate via email</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-split reveal" id="supporting">
+            <div class="section-card">
+                <p class="eyebrow">Shipping timelines</p>
+                <h2>Typical delivery windows</h2>
+                <ul class="checklist">
+                    <li>Metro cities: 1-2 working days</li>
+                    <li>Tier 2 & 3: 3-6 working days</li>
+                    <li>North-east & remote: 7-9 working days</li>
+                    <li>Bulk pallets: As per contract schedule</li>
+                </ul>
+            </div>
+            <div class="section-card">
+                <h3>Request documents</h3>
+                <form class="stacked">
+                    <label>Order ID<input type="text" placeholder="ORD-XXXX" required /></label>
+                    <label>Email for delivery<input type="email" placeholder="ops@company.com" required /></label>
+                    <label>Document needed<select>
+                            <option>POD (Proof of Delivery)</option>
+                            <option>Tax invoice</option>
+                            <option>Photos of shipment</option>
+                            <option>Other</option>
+                        </select></label>
+                    <button class="primary" type="submit">Send request</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="cta-banner reveal">
+            <div>
+                <h2>Want proactive updates?</h2>
+                <p>Switch to concierge tracking for auto WhatsApp alerts and milestone approvals.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="/specialist" class="ghost">Book a specialist</a>
+                <a href="/support" class="primary">Go to support</a>
+            </div>
+        </section>
+    </main>
+
+    <aside id="cart-drawer" class="cart-drawer" aria-label="shopping cart">
+        <header>
+            <h3>Your Cart</h3>
+            <button id="cart-close" aria-label="Close cart" title="Close cart">&times;</button>
+        </header>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+            <div class="row">
+                <span>Subtotal</span>
+                <strong id="cart-total">&#8377;0.00</strong>
+            </div>
+            <div id="checkout-form-container" class="checkout-pane is-hidden">
+                <h4>Complete Purchase</h4>
+                <div class="address-section">
+                    <div class="address-section-header">
+                        <span class="address-section-icon">&#128205;</span>
+                        <h5>Delivery Address</h5>
+                    </div>
+                    <div id="saved-addresses" class="saved-addresses"></div>
+                    <div class="address-actions-row">
+                        <button type="button" id="add-address-btn" class="ghost sm">+ Add New Address</button>
+                        <button type="button" id="use-location-btn" class="ghost sm location-btn">&#127759; Use Live
+                            Location</button>
+                    </div>
+                </div>
+                <form id="checkout-form" class="auth-form">
+                    <label>
+                        Name
+                        <input id="checkout-name" type="text" maxlength="20" placeholder="Your name" required />
+                    </label>
+                    <label>
+                        Email
+                        <input id="checkout-email" type="email" placeholder="you@example.com" required />
+                    </label>
+                    <label>
+                        Phone
+                        <input id="checkout-phone" type="tel" placeholder="+91-98765-43210" required />
+                    </label>
+                    <input type="hidden" id="checkout-address-id" value="" />
+                    <button class="primary block" type="submit">Place Order</button>
+                </form>
+            </div>
+            <div id="order-confirmation" class="checkout-pane is-hidden"></div>
+            <button id="checkout" class="primary block">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="site-footer">
+        <div>
+            <strong>Stationery Hub</strong>
+            <p>Crafting better desks for classrooms, agencies, and creators since 2026.</p>
+        </div>
+        <div>
+            <p><strong>Visit</strong><br />Mumbai · Bengaluru · NCR experience stores</p>
+        </div>
+        <div>
+            <p><strong>Policies</strong><br />Shipping · Returns · Privacy · Terms</p>
+        </div>
+        <div>
+            <p><strong>Social</strong><br />Instagram · LinkedIn · YouTube</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="main.js?v=20260522c"></script>
+</body>
+
+</html>

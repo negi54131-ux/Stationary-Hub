@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse the complete Stationery Hub catalogue." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shop | Stationery Hub" />
+    <meta property="og:description" content="Browse the complete Stationery Hub catalogue." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Shop | Stationery Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=General+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="enhanced-stationery.css?v=20260408a" />
+</head>
+
+<body>
+    <div class="utility-bar">
+        <div>Daily deals on notebooks, pens, office kits, and art supplies.</div>
+        <div class="utility-links">
+            <a href="/support">Support</a>
+            <a href="/track">Track Order</a>
+            <a href="/specialist">Talk to a specialist</a>
+        </div>
+    </div>
+
+    <header class="topbar">
+        <div class="brand mega-brand">
+            <span class="brand-pill">EST. 2026</span>
+            <span class="brand-name">Stationery Hub</span>
+        </div>
+        <nav class="primary-nav mega-nav">
+            <a href="/">Home</a>
+            <a href="/shop" class="active" aria-current="page">Shop</a>
+            <a href="/bundles">Bundles</a>
+            <a href="/categories">Categories</a>
+            <a href="/stories">Stories</a>
+            <a href="/support">Support</a>
+        </nav>
+        <div class="search mega-search">
+            <input id="search-input" type="search" placeholder="Search notebooks, pens, paper, accessories..." />
+            <button id="search-btn">Search</button>
+        </div>
+        <div class="actions mega-actions">
+            <a class="ghost" href="/login">Login</a>
+            <a class="ghost" href="/register">Register</a>
+            <button id="cart-toggle">Cart <span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="shop-hero" aria-label="Shop Hero">
+            <p class="eyebrow">Full catalogue</p>
+            <h1>Everything your desk needs, in one place.</h1>
+            <p class="subhead">Compare products, filter by category, and add to cart in seconds.</p>
+            <div class="hero-actions">
+                <button class="primary" data-scroll="#catalog">Start shopping</button>
+                <a class="ghost" href="/bundles">Shop bundles</a>
+            </div>
+            <div class="hero-promises compact">
+                <div><span class="promise-icon">&#128640;</span>Fast dispatch</div>
+                <div><span class="promise-icon">&#128230;</span>7-day returns</div>
+                <div><span class="promise-icon">&#9989;</span>Verified brands</div>
+            </div>
+            <div class="deal-strip">
+                <span class="deal-pill">Lightning offers</span>
+                <span>Extra 8% off on notebook combos</span>
+                <span class="deal-divider">|</span>
+                <span>Free delivery above &#8377;999</span>
+                <span class="deal-divider">|</span>
+                <span>UPI cashback on orders above &#8377;499</span>
+            </div>
+        </section>
+
+        <section class="promo-badges reveal" aria-label="assurances">
+            <article>
+                <h4>Verified quality</h4>
+                <p>Curated from trusted stationery brands.</p>
+            </article>
+            <article>
+                <h4>Fast dispatch</h4>
+                <p>Quick delivery network across India.</p>
+            </article>
+            <article>
+                <h4>Easy returns</h4>
+                <p>Simple replacement support for eligible items.</p>
+            </article>
+            <article>
+                <h4>Secure checkout</h4>
+                <p>Safe payments with transparent order updates.</p>
+            </article>
+        </section>
+
+        <section class="catalog reveal" id="catalog">
+            <div class="catalog-header">
+                <div>
+                    <p class="eyebrow">Browse</p>
+                    <h2>Shop the full collection</h2>
+                </div>
+                <div class="catalog-tools">
+                    <div class="filters">
+                        <button class="filter active" data-filter="all">All</button>
+                        <button class="filter" data-filter="Notebooks">Notebooks</button>
+                        <button class="filter" data-filter="Pens">Pens</button>
+                        <button class="filter" data-filter="Accessories">Accessories</button>
+                        <button class="filter" data-filter="Paper">Paper</button>
+                    </div>
+                    <div class="catalog-meta">
+                        <span><strong id="catalog-count">0</strong> items</span>
+                        <label class="sort-control">
+                            Sort by
+                            <select id="sort-select">
+                                <option value="relevance">Relevance</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating-desc">Rating</option>
+                                <option value="name-asc">Name</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="products" class="grid"></div>
+        </section>
+
+        <section class="newsletter reveal" id="newsletter">
+            <div>
+                <p class="eyebrow">Weekly drop</p>
+                <h2>Get alerts for new arrivals and deals</h2>
+            </div>
+            <form id="newsletter-form" class="newsletter-form">
+                <input type="email" name="email" maxlength="25" placeholder="you@studio.com" required />
+                <button class="primary" type="submit">Subscribe</button>
+            </form>
+        </section>
+
+        <section class="cta-banner reveal" id="support">
+            <div>
+                <h2>Need help choosing products?</h2>
+                <p>Talk to our team for curated recommendations based on your budget.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="tel:+919876543210" class="ghost">Call us</a>
+                <a class="primary stories-cta-link" href="/support">Get support</a>
+            </div>
+        </section>
+    </main>
+
+    <aside id="cart-drawer" class="cart-drawer" aria-label="shopping cart">
+        <header>
+            <h3>Your Cart</h3>
+            <button id="cart-close" aria-label="Close cart" title="Close cart">&times;</button>
+        </header>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+            <div class="row">
+                <span>Subtotal</span>
+                <strong id="cart-total">&#8377;0.00</strong>
+            </div>
+            <div id="checkout-form-container" class="checkout-pane is-hidden">
+                <h4>Complete Purchase</h4>
+                <div class="address-section">
+                    <div class="address-section-header">
+                        <span class="address-section-icon">&#128205;</span>
+                        <h5>Delivery Address</h5>
+                    </div>
+                    <div id="saved-addresses" class="saved-addresses"></div>
+                    <div class="address-actions-row">
+                        <button type="button" id="add-address-btn" class="ghost sm">+ Add New Address</button>
+                        <button type="button" id="use-location-btn" class="ghost sm location-btn">&#127759; Use Live
+                            Location</button>
+                    </div>
+                </div>
+                <form id="checkout-form" class="auth-form">
+                    <label>
+                        Name
+                        <input id="checkout-name" type="text" maxlength="20" placeholder="Your name" required />
+                    </label>
+                    <label>
+                        Email
+                        <input id="checkout-email" type="email" maxlength="25" placeholder="you@example.com" required />
+                    </label>
+                    <label>
+                        Phone
+                        <input id="checkout-phone" type="tel" placeholder="+91-98765-43210" required />
+                    </label>
+                    <input type="hidden" id="checkout-address-id" value="" />
+                    <button class="primary block" type="submit">Place Order</button>
+                </form>
+            </div>
+            <div id="order-confirmation" class="checkout-pane is-hidden"></div>
+            <button id="checkout" class="primary block">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="site-footer">
+        <div>
+            <strong>Stationery Hub</strong>
+            <p>Crafting better desks for classrooms, agencies, and creators since 2026.</p>
+        </div>
+        <div>
+            <p><strong>Visit</strong><br />Mumbai · Bengaluru · NCR experience stores</p>
+        </div>
+        <div>
+            <p><strong>Policies</strong><br />Shipping · Returns · Privacy · Terms</p>
+        </div>
+        <div>
+            <p><strong>Social</strong><br />Instagram · LinkedIn · YouTube</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="main.js?v=20260522c"></script>
+</body>
+
+</html>

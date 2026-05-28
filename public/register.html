@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create your Stationery Hub account for bulk orders" />
+    <title>Register | Stationery Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=General+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="enhanced-stationery.css?v=20260408a" />
+</head>
+
+<body class="auth-body">
+    <header class="topbar">
+        <div class="brand mega-brand">
+            <span class="brand-pill">EST. 2026</span>
+            <span class="brand-name">Stationery Hub</span>
+        </div>
+        <div class="actions mega-actions">
+            <a class="ghost" href="/">Home</a>
+            <a class="ghost" href="/login">Login</a>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <section class="auth-split" aria-label="Register area">
+            <article class="auth-highlight">
+                <p class="eyebrow">Create account</p>
+                <h2>Register once and checkout gets much faster.</h2>
+                <p class="muted">Save addresses, sync cart across devices, and track every order from one place.</p>
+            </article>
+
+            <section class="auth-card" aria-labelledby="register-title">
+                <h1 id="register-title">Create your account</h1>
+                <p class="muted">Join and start filling your cart.</p>
+                <form id="register-form" class="auth-form" autocomplete="on" aria-describedby="register-feedback">
+                    <label for="register-name">Full name</label>
+                    <input id="register-name" name="name" type="text" maxlength="20" placeholder="Alex Writer" required
+                        autocomplete="name" />
+                    <label for="register-email">Email</label>
+                    <input id="register-email" name="email" type="email" maxlength="25" placeholder="you@example.com"
+                        required autocomplete="email" />
+                    <label for="register-password">Password</label>
+                    <div class="password-wrap">
+                        <input id="register-password" name="password" type="password" maxlength="20"
+                            placeholder="••••••••" minlength="6" required autocomplete="new-password" />
+                        <button type="button" class="password-toggle" id="register-password-toggle"
+                            aria-controls="register-password" aria-label="Show password">Show</button>
+                    </div>
+                    <label for="register-confirm-password">Confirm password</label>
+                    <div class="password-wrap">
+                        <input id="register-confirm-password" name="confirmPassword" type="password" maxlength="20"
+                            placeholder="Re-enter password" minlength="6" required autocomplete="new-password" />
+                        <button type="button" class="password-toggle" id="register-confirm-password-toggle"
+                            aria-controls="register-confirm-password" aria-label="Show confirm password">Show</button>
+                    </div>
+                    <p id="password-match-status" class="password-match-status muted" aria-live="polite">Re-enter
+                        password to confirm match.</p>
+                    <div class="password-strength" id="password-strength" aria-live="polite">
+                        <div class="password-strength-bar"><span id="password-strength-fill"></span></div>
+                        <p id="password-strength-label" class="muted">Use at least 6 characters.</p>
+                    </div>
+                    <button class="primary block" type="submit">Register</button>
+                </form>
+                <p id="register-feedback" class="form-feedback" role="alert" aria-live="polite"></p>
+                <p class="muted">Already have an account? <a class="link" href="/login">Log in</a>.</p>
+            </section>
+        </section>
+    </main>
+
+    <script defer>
+        const registerForm = document.getElementById("register-form");
+        const registerFeedback = document.getElementById("register-feedback");
+        const registerButton = registerForm.querySelector("button[type='submit']");
+        const registerPassword = document.getElementById("register-password");
+        const registerPasswordToggle = document.getElementById("register-password-toggle");
+        const registerConfirmPassword = document.getElementById("register-confirm-password");
+        const registerConfirmPasswordToggle = document.getElementById("register-confirm-password-toggle");
+        const passwordMatchStatus = document.getElementById("password-match-status");
+        const strengthFill = document.getElementById("password-strength-fill");
+        const strengthLabel = document.getElementById("password-strength-label");
+
+        // Accessibility: focus feedback on error
+        function showFeedback(msg, type = "error") {
+            registerFeedback.textContent = msg;
+            registerFeedback.className = type ? "form-feedback " + type : "form-feedback";
+            if (type === "error") registerFeedback.focus && registerFeedback.focus();
+        }
+
+        function togglePassword(input, toggleButton) {
+            if (!input || !toggleButton) return;
+            const nextType = input.type === "password" ? "text" : "password";
+            input.type = nextType;
+            const isHidden = nextType === "password";
+            toggleButton.textContent = isHidden ? "Show" : "Hide";
+            toggleButton.setAttribute("aria-label", isHidden ? "Show password" : "Hide password");
+        }
+
+        function getPasswordStrength(password) {
+            let score = 0;
+            if (password.length >= 6) score += 1;
+            if (/[A-Z]/.test(password)) score += 1;
+            if (/[0-9]/.test(password)) score += 1;
+            if (/[^A-Za-z0-9]/.test(password)) score += 1;
+            return score;
+        }
+
+        function renderPasswordStrength(password) {
+            const score = getPasswordStrength(password);
+            const width = (score / 4) * 100;
+            strengthFill.style.width = `${width}%`;
+            strengthFill.className = `strength-${score}`;
+
+            if (!password.length) {
+                strengthLabel.textContent = "Use at least 6 characters.";
+                return;
+            }
+
+            if (score <= 1) {
+                strengthLabel.textContent = "Weak password";
+            } else if (score <= 2) {
+                strengthLabel.textContent = "Medium password";
+            } else if (score === 3) {
+                strengthLabel.textContent = "Strong password";
+            } else {
+                strengthLabel.textContent = "Very strong password";
+            }
+        }
+
+        function renderPasswordMatch() {
+            const password = registerPassword.value;
+            const confirmPassword = registerConfirmPassword.value;
+
+            passwordMatchStatus.className = "password-match-status muted";
+            if (!confirmPassword.length) {
+                passwordMatchStatus.textContent = "Re-enter password to confirm match.";
+                return;
+            }
+
+            if (password === confirmPassword) {
+                passwordMatchStatus.textContent = "Passwords match.";
+                passwordMatchStatus.className = "password-match-status success";
+            } else {
+                passwordMatchStatus.textContent = "Passwords do not match.";
+                passwordMatchStatus.className = "password-match-status error";
+            }
+        }
+
+        const handleRegister = async (event) => {
+            event.preventDefault();
+            showFeedback("", "");
+            const formData = new FormData(registerForm);
+            const payload = {
+                name: String(formData.get("name") || "").trim(),
+                email: String(formData.get("email") || "").trim(),
+                password: String(formData.get("password") || ""),
+            };
+
+            if (payload.password !== String(formData.get("confirmPassword") || "")) {
+                showFeedback("Passwords do not match.", "error");
+                registerConfirmPassword.focus();
+                return;
+            }
+
+            registerButton.disabled = true;
+            const originalLabel = registerButton.textContent;
+            registerButton.textContent = "Creating account...";
+            try {
+                const res = await fetch("/api/auth/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    throw new Error(data.message || "Unable to register. Please try again.");
+                }
+                localStorage.setItem("token", data.token);
+                showFeedback("Account created. Redirecting...", "success");
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 600);
+            } catch (err) {
+                showFeedback(err.message, "error");
+            } finally {
+                registerButton.disabled = false;
+                registerButton.textContent = originalLabel;
+            }
+        };
+
+        registerForm.addEventListener("submit", handleRegister);
+        registerPasswordToggle.addEventListener("click", () => togglePassword(registerPassword, registerPasswordToggle));
+        registerConfirmPasswordToggle.addEventListener("click", () => togglePassword(registerConfirmPassword, registerConfirmPasswordToggle));
+        registerPassword.addEventListener("input", (event) => {
+            renderPasswordStrength(event.target.value);
+            renderPasswordMatch();
+        });
+        registerConfirmPassword.addEventListener("input", renderPasswordMatch);
+    </script>
+</body>
+
+</html>

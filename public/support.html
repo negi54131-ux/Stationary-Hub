@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Stationery Hub customer support center" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Support | Stationery Hub" />
+    <meta property="og:description" content="Stationery Hub customer support center" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Support | Stationery Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=General+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="enhanced-stationery.css?v=20260408a" />
+</head>
+
+<body>
+    <div class="utility-bar">
+        <div>24×7 concierge for schools, studios, and offices.</div>
+        <div class="utility-links">
+            <a href="/track">Track Order</a>
+            <a href="/specialist">Talk to a specialist</a>
+            <a href="tel:+919876543210">Call +91-98765-43210</a>
+        </div>
+    </div>
+
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-pill">EST. 2026</span>
+            <span class="brand-name">Stationery Hub</span>
+        </div>
+        <nav class="primary-nav mega-nav">
+            <a href="/">Home</a>
+            <a href="/shop">Shop</a>
+            <a href="/bundles">Bundles</a>
+            <a href="/categories">Categories</a>
+            <a href="/stories">Stories</a>
+            <a href="/support" class="active" aria-current="page">Support</a>
+        </nav>
+        <div class="actions">
+            <a class="ghost" href="/login">Login</a>
+            <a class="ghost" href="/register">Register</a>
+            <button id="cart-toggle">Cart <span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="support-hero">
+            <div>
+                <p class="eyebrow">Support center</p>
+                <h1>Get answers, replacements, or restocks—fast.</h1>
+                <p class="subhead">Raise tickets, follow SLAs, and chat with real people who understand stationery ops.
+                </p>
+                <div class="support-hero-actions">
+                    <button class="primary" data-scroll="#contact-support">Submit a ticket</button>
+                    <button class="ghost" data-scroll="#help-options">Explore help options</button>
+                </div>
+                <ul class="support-hero-points">
+                    <li>2 hour first response</li>
+                    <li>WhatsApp + phone support</li>
+                    <li>Dedicated concierge for contracts</li>
+                </ul>
+            </div>
+            <div class="support-hero-card">
+                <p class="support-pill">Live SLA</p>
+                <h3>Average resolution</h3>
+                <p class="support-sla">5 hrs</p>
+                <p class="support-muted">Monday–Friday · 8am–10pm IST</p>
+                <button class="primary" data-scroll="#contact-support">Start a conversation</button>
+            </div>
+        </section>
+
+        <section class="support-services reveal" id="help-options">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Choose your channel</p>
+                    <h2>We help the way you prefer</h2>
+                </div>
+            </div>
+            <div class="support-services-grid">
+                <article>
+                    <h3>Self-serve guides</h3>
+                    <p>Browse shipping timelines, payment policies, and product care checklists.</p>
+                    <button class="ghost" data-scroll="#knowledge">View knowledge base</button>
+                </article>
+                <article>
+                    <h3>WhatsApp concierge</h3>
+                    <p>Get live updates, images, or urgent restock approvals via WhatsApp.</p>
+                    <a class="ghost" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">Start
+                        chat</a>
+                </article>
+                <article>
+                    <h3>Email desk</h3>
+                    <p>Need documentation or quotes? Send us a note and we will respond within a business day.</p>
+                    <a class="ghost" href="mailto:hello@stationeryhub.in">Email support</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="support-split reveal" id="contact-support">
+            <div class="support-card">
+                <p class="eyebrow">Support coverage</p>
+                <h2>What we can resolve for you</h2>
+                <ul class="support-checklist">
+                    <li>Delivery delays, damages, and replacements</li>
+                    <li>GST invoices, PO/GRN reconciliations, credit notes</li>
+                    <li>Bulk customization requests and artwork approvals</li>
+                    <li>Account, login, and cart syncing issues</li>
+                </ul>
+                <p class="support-note">Need order status? <a class="support-link" href="/track">Use the
+                        tracker</a>.</p>
+            </div>
+            <div class="support-card">
+                <h3>Submit a support request</h3>
+                <form id="support-form" class="support-form">
+                    <label>Full name<input name="name" type="text" maxlength="20" placeholder="Priya Sharma"
+                            required /></label>
+                    <label>Work email<input name="email" type="email" placeholder="ops@studio.com" required /></label>
+                    <label>Order ID (optional)<input name="orderId" type="text" placeholder="ORD-XXXX" /></label>
+                    <label>Subject<input name="subject" type="text"
+                            placeholder="Shipping delay, damaged item, etc." /></label>
+                    <label>How can we help?<textarea name="message" rows="4" placeholder="Describe the issue"
+                            required></textarea></label>
+                    <button class="primary" type="submit">Send request</button>
+                </form>
+                <p id="support-status" class="support-status form-feedback" role="status" aria-live="polite" hidden></p>
+            </div>
+        </section>
+
+        <section class="faq reveal" id="knowledge">
+            <div class="section-header">
+                <h2>Knowledge base</h2>
+            </div>
+            <div class="faq-grid">
+                <article>
+                    <h3>Shipping timelines</h3>
+                    <p>Metros: 1-2 days, Tier 2/3: 3-6 days, remote: 7-9 days via India Post.</p>
+                </article>
+                <article>
+                    <h3>Return policy</h3>
+                    <p>Report damages within 7 days for pickup + replacement or credits within 48h.</p>
+                </article>
+                <article>
+                    <h3>Bulk SLAs</h3>
+                    <p>Standard kitting ships in 72h. Custom branding takes 5-7 business days.</p>
+                </article>
+                <article>
+                    <h3>Payments</h3>
+                    <p>UPI, cards, bank transfers, and Net-30 credit for approved institutions.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-banner reveal">
+            <div>
+                <h2>Need a dedicated account manager?</h2>
+                <p>Upgrade to concierge support for proactive restocks and quarterly business reviews.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="/specialist" class="ghost">Book a specialist</a>
+                <a href="tel:+919876543210" class="primary">Call support</a>
+            </div>
+        </section>
+    </main>
+
+    <aside id="cart-drawer" class="cart-drawer" aria-label="shopping cart">
+        <header>
+            <h3>Your Cart</h3>
+            <button id="cart-close" aria-label="Close cart" title="Close cart">&times;</button>
+        </header>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+            <div class="row">
+                <span>Subtotal</span>
+                <strong id="cart-total">&#8377;0.00</strong>
+            </div>
+            <div id="checkout-form-container" class="checkout-pane is-hidden">
+                <h4>Complete Purchase</h4>
+                <div class="address-section">
+                    <div class="address-section-header">
+                        <span class="address-section-icon">&#128205;</span>
+                        <h5>Delivery Address</h5>
+                    </div>
+                    <div id="saved-addresses" class="saved-addresses"></div>
+                    <div class="address-actions-row">
+                        <button type="button" id="add-address-btn" class="ghost sm">+ Add New Address</button>
+                        <button type="button" id="use-location-btn" class="ghost sm location-btn">&#127759; Use Live
+                            Location</button>
+                    </div>
+                </div>
+                <form id="checkout-form" class="auth-form">
+                    <label>
+                        Name
+                        <input id="checkout-name" type="text" placeholder="Your name" required />
+                    </label>
+                    <label>
+                        Email
+                        <input id="checkout-email" type="email" placeholder="you@example.com" required />
+                    </label>
+                    <label>
+                        Phone
+                        <input id="checkout-phone" type="tel" placeholder="+91-98765-43210" required />
+                    </label>
+                    <input type="hidden" id="checkout-address-id" value="" />
+                    <button class="primary block" type="submit">Place Order</button>
+                </form>
+            </div>
+            <div id="order-confirmation" class="checkout-pane is-hidden"></div>
+            <button id="checkout" class="primary block">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="site-footer">
+        <div>
+            <strong>Stationery Hub</strong>
+            <p>Crafting better desks for classrooms, agencies, and creators since 2026.</p>
+        </div>
+        <div>
+            <p><strong>Visit</strong><br />Mumbai · Bengaluru · NCR experience stores</p>
+        </div>
+        <div>
+            <p><strong>Policies</strong><br />Shipping · Returns · Privacy · Terms</p>
+        </div>
+        <div>
+            <p><strong>Social</strong><br />Instagram · LinkedIn · YouTube</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="main.js?v=20260522c"></script>
+</body>
+
+</html>

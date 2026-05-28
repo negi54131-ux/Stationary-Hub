@@ -1,0 +1,42 @@
+{
+  "name": "stationary-shop",
+  "version": "1.0.0",
+  "description": "Simple stationery e-commerce site with Node.js backend and vanilla frontend.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "seed": "node server/db/seed.js",
+    "seed:demo": "node server/db/seed.js --demo-orders",
+    "seed:demo:clean": "node server/db/seed.js --cleanup-demo-orders",
+    "test": "node server/tests/auth.test.js",
+    "lint": "eslint ./public/*.js ./server/**/*.js",
+    "format": "prettier --write ./public/*.js ./server/**/*.js ./public/*.css",
+    "minify-css": "cleancss -o ./public/enhanced-stationery.min.css ./public/enhanced-stationery.css",
+    "minify-js": "terser ./public/main.js -o ./public/main.min.js"
+  },
+  "keywords": [
+    "stationery",
+    "ecommerce",
+    "express",
+    "frontend"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.13"
+  },
+  "optionalDependencies": {
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supplier Payments | Stationery Hub</title>
+    <link rel="stylesheet" href="enhanced-stationery.css" />
+    <link rel="stylesheet" href="supplier-dashboard.css?v=20260526b" />
+    <link rel="stylesheet" href="supplier-dashboard-overrides.css?v=20260526a" />
+</head>
+
+<body class="page-supplier">
+    <svg class="svg-sprite" aria-hidden="true">
+        <symbol id="icon-products" viewBox="0 0 24 24">
+            <path d="M3 6h18v2H3V6zm0 5h12v2H3v-2zm0 5h18v2H3v-2z" />
+        </symbol>
+        <symbol id="icon-analytics" viewBox="0 0 24 24">
+            <path d="M3 13h2v6H3v-6zM8 8h2v11H8V8zM13 3h2v16h-2V3zM18 11h2v8h-2v-8z" />
+        </symbol>
+        <symbol id="icon-upload" viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zM11 16h2V8h3l-4-5-4 5h3v8z" />
+        </symbol>
+        <symbol id="icon-export" viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zM12 4l4 4h-3v6h-2V8H8l4-4z" />
+        </symbol>
+        <symbol id="icon-save" viewBox="0 0 24 24">
+            <path
+                d="M17 3H5c-1.1 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4zM12 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm3-10H6V5h9v4z" />
+        </symbol>
+        <symbol id="icon-payments" viewBox="0 0 24 24">
+            <path
+                d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24">
+            <path
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+        </symbol>
+        <symbol id="icon-truck" viewBox="0 0 24 24">
+            <path
+                d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm1.5-5h-3V9h3v3z" />
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24">
+            <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+        </symbol>
+        <symbol id="icon-support" viewBox="0 0 24 24">
+            <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" />
+        </symbol>
+    </svg>
+
+    <div class="supplier-hero">
+        <div>
+            <p class="eyebrow">Supplier Console</p>
+            <h1>Payments</h1>
+            <p>Track your upcoming payouts, completed transactions, and unscheduled billing cycles.</p>
+        </div>
+    </div>
+
+    <main class="supplier-wrap">
+        <section class="supplier-card supplier-loading" id="supplier-loading">
+            <div class="loading-title">Loading supplier dashboard…</div>
+            <div class="loading-sub">Please wait while we verify access.</div>
+        </section>
+
+        <section class="supplier-card" id="supplier-login-card" hidden>
+            <h2>Supplier Login</h2>
+            <form id="supplier-login-form" class="supplier-form">
+                <label>Email<input type="email" id="supplier-email" maxlength="25" required /></label>
+                <label>Password<input type="password" id="supplier-password" maxlength="20" required /></label>
+                <button class="primary" type="submit">Sign in</button>
+                <p class="form-hint" id="supplier-login-message"></p>
+            </form>
+        </section>
+
+        <section class="supplier-card" id="supplier-dashboard" hidden>
+            <div class="supplier-shell">
+                <aside class="supplier-sidebar">
+                    <div class="supplier-brand">
+                        <div class="supplier-brand-mark">S</div>
+                        <div>
+                            <h3>Stationery Hub</h3>
+                            <p class="muted">Smooth inventory control</p>
+                        </div>
+                    </div>
+
+                    <nav class="supplier-nav-links" aria-label="Dashboard navigation">
+                        <a href="/supplier.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-analytics"></use>
+                            </svg>Overview</a>
+                        <a href="/supplier-products.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-products"></use>
+                            </svg>Products</a>
+                        <a href="/supplier-pricing.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-save"></use>
+                            </svg>Pricing</a>
+                        <a href="/supplier-payments.html" class="active" aria-current="page"><svg class="icon"
+                                aria-hidden="true">
+                                <use href="#icon-payments"></use>
+                            </svg>Payments</a>
+                        <a href="/supplier-returns.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-close"></use>
+                            </svg>Returns</a>
+                        <a href="/supplier-orders.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-analytics"></use>
+                            </svg>Orders</a>
+                        <a href="/supplier-csv.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-upload"></use>
+                            </svg>CSV Import</a>
+                        <a href="/supplier-tickets.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-support"></use>
+                            </svg>Support &amp; Help</a>
+                    </nav>
+
+                    <div class="supplier-sidebar-card">
+                        <p class="muted">Quick stats</p>
+                        <div class="sidebar-stat"><span>Products</span><strong id="supplier-count-products">0</strong>
+                        </div>
+                        <div class="sidebar-stat"><span>Orders</span><strong id="supplier-count-orders">0</strong></div>
+                        <div class="sidebar-stat"><span>Revenue</span><strong id="supplier-revenue">₹0</strong></div>
+                        <div class="sidebar-stat"><span>Pending</span><strong id="supplier-pending">0</strong></div>
+                    </div>
+
+                    <div class="supplier-header-actions sidebar-actions">
+                        <button id="supplier-back" class="ghost">Back</button>
+                        <button id="supplier-logout" class="ghost">Logout</button>
+                    </div>
+                </aside>
+
+                <div class="supplier-content">
+                    <div class="supplier-header modern" style="align-items: center;">
+                        <div class="supplier-header-left">
+                            <h2>Payments</h2>
+                        </div>
+                        <div class="payments-top-controls">
+                            <!-- Download Button with notification dot -->
+                            <div class="download-dropdown-wrap">
+                                <button class="primary payments-download-btn" id="payments-download-trigger">
+                                    <svg class="icon" aria-hidden="true" style="margin: 0 4px 0 0;">
+                                        <use href="#icon-upload"></use>
+                                    </svg> Download
+                                    <span class="chevron-down">▼</span>
+                                    <span class="notification-dot"></span>
+                                </button>
+                                <div class="dropdown-content" id="payments-download-menu" hidden>
+                                    <a href="#" id="export-payments-csv">Export Payments as CSV</a>
+                                    <a href="#" id="export-payments-pdf">Export Invoice Statement</a>
+                                </div>
+                            </div>
+
+                            <!-- Search by Order Number Dropdown + Input -->
+                            <div class="payments-search-box">
+                                <select id="payments-search-type">
+                                    <option value="order">Order / Sub Order No.</option>
+                                </select>
+                                <input type="text" id="payments-search-input" placeholder="Search orders..." />
+                                <button class="payments-search-btn" aria-label="Search">
+                                    <svg class="icon" aria-hidden="true" style="margin: 0;">
+                                        <use href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payout Cards Grid (Upcoming & Completed) -->
+                    <div class="payments-grid">
+                        <!-- Upcoming Payments Column -->
+                        <div class="payment-card-panel">
+                            <div class="panel-header">
+                                <div class="header-left">
+                                    <svg class="icon icon-clock" aria-hidden="true">
+                                        <use href="#icon-clock"></use>
+                                    </svg>
+                                    <h3>Upcoming Payments</h3>
+                                </div>
+                                <button class="ghost action-pill" id="btn-next7-payout">Next 7 days (<span
+                                        id="upcoming-sum-pill">₹0.00</span>) &gt;</button>
+                            </div>
+                            <div class="panel-body" id="upcoming-payments-container">
+                                <!-- Empty State -->
+                                <div class="payments-empty-state" id="upcoming-empty-view">
+                                    <div class="card-illustration">
+                                        <div class="inner-card">
+                                            <span class="rupee-icon">₹₹</span>
+                                        </div>
+                                    </div>
+                                    <h4>No upcoming payments to show</h4>
+                                    <p class="muted">Your upcoming payouts will appear here once orders are delivered
+                                    </p>
+                                </div>
+                                <!-- List View (hidden by default) -->
+                                <div class="payments-list" id="upcoming-list-view" hidden></div>
+                            </div>
+                        </div>
+
+                        <!-- Completed Payments Column -->
+                        <div class="payment-card-panel">
+                            <div class="panel-header">
+                                <div class="header-left">
+                                    <svg class="icon icon-check" aria-hidden="true">
+                                        <use href="#icon-check"></use>
+                                    </svg>
+                                    <h3>Completed Payments</h3>
+                                </div>
+                                <button class="ghost action-pill" id="btn-last30-payout">Last 30 days (<span
+                                        id="completed-sum-pill">₹0.00</span>) &gt;</button>
+                            </div>
+                            <div class="panel-body" id="completed-payments-container">
+                                <!-- Empty State -->
+                                <div class="payments-empty-state" id="completed-empty-view">
+                                    <div class="card-illustration">
+                                        <div class="inner-card">
+                                            <span class="rupee-icon">₹₹</span>
+                                        </div>
+                                    </div>
+                                    <h4>No completed payments to show</h4>
+                                    <p class="muted">Once orders are delivered and payments cleared, payment information
+                                        will appear here.</p>
+                                </div>
+                                <!-- List View (hidden by default) -->
+                                <div class="payments-list" id="completed-list-view" hidden></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Unscheduled Payments Banner -->
+                    <div class="unscheduled-banner">
+                        <div class="banner-left">
+                            <div class="truck-icon-container">
+                                <svg class="icon icon-truck" aria-hidden="true">
+                                    <use href="#icon-truck"></use>
+                                </svg>
+                            </div>
+                            <div class="banner-text">
+                                <h3>Unscheduled Payments</h3>
+                                <p>Payments expected from your shipped orders. Once delivered, we will automatically
+                                    move it to your upcoming payments.</p>
+                            </div>
+                        </div>
+                        <div class="banner-right">
+                            <span class="unscheduled-sum" id="unscheduled-banner-sum">₹0.00</span>
+                            <button class="ghost banner-btn" id="btn-view-unscheduled">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Unscheduled Details List (Hidden by default, toggled by View Details) -->
+                    <div class="panel" id="unscheduled-details-panel" hidden
+                        style="margin-top: -10px; margin-bottom: 20px; animation: fadeIn 0.3s ease;">
+                        <h3>Unscheduled (Shipped) Orders</h3>
+                        <div class="payments-list" id="unscheduled-list-view"></div>
+                    </div>
+
+                    <!-- Payments Over Time -->
+                    <div class="panel payments-chart-panel">
+                        <div class="chart-header">
+                            <h3>Payments over time</h3>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-box legend-blue"></span>
+                                    <span>Payments to Date (<span id="chart-sum-paid">₹0</span>)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-box legend-grey"></span>
+                                    <span>Outstanding Payment (<span id="chart-sum-outstanding">₹0</span>)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-bars-container" id="payments-trends-chart">
+                            <!-- Visual chart representation generated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-save" class="toast-save" role="status" aria-live="polite"></div>
+    <script src="supplier.js"></script>
+</body>
+
+</html>

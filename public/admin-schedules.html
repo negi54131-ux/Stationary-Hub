@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Schedules | Stationery Hub</title>
+    <link rel="stylesheet" href="enhanced-stationery.css" />
+    <link rel="stylesheet" href="supplier-dashboard.css?v=20260524a" />
+</head>
+
+<body class="page-supplier">
+    <div class="supplier-hero">
+        <div>
+            <p class="eyebrow">Admin Console</p>
+            <h1>Export Schedules</h1>
+            <p>Manage analytics export schedules and recipients.</p>
+        </div>
+    </div>
+
+    <main class="supplier-wrap">
+        <section class="supplier-card" id="admin-login-card">
+            <h2>Admin Login</h2>
+            <p class="muted">Login as an admin user to manage schedules.</p>
+            <div class="admin-login-actions">
+                <button id="admin-login" class="primary">Use Current Session</button>
+            </div>
+            <p class="form-hint" id="admin-login-message"></p>
+        </section>
+
+        <section class="supplier-card" id="admin-dashboard" hidden>
+            <div class="panel">
+                <div class="panel-head">
+                    <h3>Schedules</h3>
+                    <button id="admin-refresh" class="ghost">Refresh</button>
+                </div>
+                <div class="admin-table" role="region" aria-live="polite">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Supplier Email</th>
+                                <th>Report</th>
+                                <th>Frequency</th>
+                                <th>Recipient</th>
+                                <th>Status</th>
+                                <th>Last Sent</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-schedule-list"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Create Schedule</h3>
+                <form id="admin-schedule-form" class="supplier-form compact">
+                    <div class="form-row"><label>Supplier Email<input type="email" id="admin-supplier-email" maxlength="25"
+                                required /></label></div>
+                    <div class="form-row"><label>Report Type
+                            <select id="admin-report-type">
+                                <option value="analytics">Analytics</option>
+                            </select>
+                        </label></div>
+                    <div class="form-row"><label>Frequency
+                            <select id="admin-frequency">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </label></div>
+                    <div class="form-row"><label>Recipient Email<input type="email" id="admin-recipient-email" maxlength="25"
+                                required /></label></div>
+                    <div class="form-actions">
+                        <button class="primary" type="submit">Save</button>
+                        <button class="ghost" type="button" id="admin-form-reset">Clear</button>
+                    </div>
+                    <p class="form-hint" id="admin-form-message"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin-schedules.js"></script>
+</body>
+
+</html>

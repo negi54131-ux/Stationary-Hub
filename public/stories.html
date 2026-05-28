@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Stories from teams using Stationery Hub." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Stories | Stationery Hub" />
+    <meta property="og:description" content="Stories from teams using Stationery Hub." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Stories | Stationery Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=General+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="enhanced-stationery.css?v=20260408a" />
+</head>
+
+<body class="page-stories" data-product-ids="nb-001,pn-002,mk-003,hp-005,pa-010">
+    <div class="utility-bar">
+        <div>Case studies, rituals, and behind-the-desk stories.</div>
+        <div class="utility-links">
+            <a href="/support">Support</a>
+            <a href="/track">Track Order</a>
+            <a href="/specialist">Talk to a specialist</a>
+        </div>
+    </div>
+
+    <header class="topbar">
+        <div class="brand mega-brand">
+            <span class="brand-pill">EST. 2026</span>
+            <span class="brand-name">Stationery Hub</span>
+        </div>
+        <nav class="primary-nav mega-nav">
+            <a href="/">Home</a>
+            <a href="/shop">Shop</a>
+            <a href="/bundles">Bundles</a>
+            <a href="/categories">Categories</a>
+            <a href="/stories" class="active">Stories</a>
+            <a href="/support">Support</a>
+        </nav>
+        <div class="search mega-search">
+            <input id="search-input" type="search" placeholder="Search articles or quotes" />
+            <button id="search-btn">Search</button>
+        </div>
+        <div class="actions mega-actions">
+            <a class="ghost" href="/login">Login</a>
+            <a class="ghost" href="/register">Register</a>
+            <button id="cart-toggle">Cart <span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" aria-label="Stories Hero">
+            <div>
+                <p class="eyebrow">Stories</p>
+                <h1>Inside the desks of modern teams.</h1>
+                <p class="subhead">Real rituals, procurement playbooks, and product combos that keep work moving.</p>
+                <div class="hero-actions">
+                    <button class="primary" data-scroll="#stories-grid">Read features</button>
+                    <button class="ghost" data-scroll="#newsletter">Get monthly digest</button>
+                </div>
+                <ul class="hero-points">
+                    <li>Culture spotlights</li>
+                    <li>Procurement tips</li>
+                    <li>Desk makeovers</li>
+                </ul>
+            </div>
+            <div class="hero-card">
+                <p class="pill">Latest drop</p>
+                <h3>Design Sprints @ Loom</h3>
+                <p>How Loom’s brand studio refills every Friday using our automation.</p>
+                <button class="primary" data-scroll="#stories-grid">Read story</button>
+            </div>
+        </section>
+
+        <section class="stories-grid reveal" id="stories-grid">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Featured teams</p>
+                    <h2>From agencies to schools</h2>
+                </div>
+                <p>We interview customers every month; pitch yours!</p>
+            </div>
+            <div class="grid three-up">
+                <article class="stories-card">
+                    <h3>Pulse Labs</h3>
+                    <p>How a 40-person studio standardized their sprint kits.</p>
+                    <button class="ghost" data-filter-jump="Notebooks">Shop their picks</button>
+                </article>
+                <article class="stories-card">
+                    <h3>Bright Fields School</h3>
+                    <p>Quarterly classroom restock plan with 20% waste reduction.</p>
+                    <button class="ghost" data-filter-jump="Paper">Shop their picks</button>
+                </article>
+                <article class="stories-card">
+                    <h3>Northstar VC</h3>
+                    <p>Boardroom-ready executive kits with custom emboss.</p>
+                    <button class="ghost" data-filter-jump="Accessories">Shop their picks</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="catalog reveal" id="catalog">
+            <div class="catalog-header">
+                <div>
+                    <p class="eyebrow">As seen in stories</p>
+                    <h2>Most referenced products</h2>
+                </div>
+                <div class="filters">
+                    <button class="filter active" data-filter="all">All</button>
+                    <button class="filter" data-filter="Notebooks">Notebooks</button>
+                    <button class="filter" data-filter="Pens">Pens</button>
+                    <button class="filter" data-filter="Accessories">Accessories</button>
+                    <button class="filter" data-filter="Paper">Paper</button>
+                </div>
+            </div>
+            <div id="products" class="grid"></div>
+        </section>
+
+        <section class="newsletter reveal" id="newsletter">
+            <div>
+                <h2>Get the monthly desk dispatch</h2>
+                <p>Stories, product drops, and procurement tips sent monthly.</p>
+            </div>
+            <form id="newsletter-form" class="newsletter-form">
+                <input type="email" name="email" maxlength="25" placeholder="you@company.com" required />
+                <button class="primary" type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <aside id="cart-drawer" class="cart-drawer" aria-label="shopping cart">
+        <header>
+            <h3>Your Cart</h3>
+            <button id="cart-close" aria-label="Close cart" title="Close cart">&times;</button>
+        </header>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+            <div class="row">
+                <span>Subtotal</span>
+                <strong id="cart-total">&#8377;0.00</strong>
+            </div>
+            <div id="checkout-form-container" class="checkout-pane is-hidden">
+                <h4>Complete Purchase</h4>
+                <div class="address-section">
+                    <div class="address-section-header">
+                        <span class="address-section-icon">&#128205;</span>
+                        <h5>Delivery Address</h5>
+                    </div>
+                    <div id="saved-addresses" class="saved-addresses"></div>
+                    <div class="address-actions-row">
+                        <button type="button" id="add-address-btn" class="ghost sm">+ Add New Address</button>
+                        <button type="button" id="use-location-btn" class="ghost sm location-btn">&#127759; Use Live
+                            Location</button>
+                    </div>
+                </div>
+                <form id="checkout-form" class="auth-form">
+                    <label>
+                        Name
+                        <input id="checkout-name" type="text" maxlength="20" placeholder="Your name" required />
+                    </label>
+                    <label>
+                        Email
+                        <input id="checkout-email" type="email" maxlength="25" placeholder="you@example.com" required />
+                    </label>
+                    <label>
+                        Phone
+                        <input id="checkout-phone" type="tel" placeholder="+91-98765-43210" required />
+                    </label>
+                    <input type="hidden" id="checkout-address-id" value="" />
+                    <button class="primary block" type="submit">Place Order</button>
+                </form>
+            </div>
+            <div id="order-confirmation" class="checkout-pane is-hidden"></div>
+            <button id="checkout" class="primary block">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="site-footer">
+        <div>
+            <strong>Stationery Hub</strong>
+            <p>Crafting better desks for classrooms, agencies, and creators since 2026.</p>
+        </div>
+        <div>
+            <p><strong>Visit</strong><br />Mumbai · Bengaluru · NCR experience stores</p>
+        </div>
+        <div>
+            <p><strong>Policies</strong><br />Shipping · Returns · Privacy · Terms</p>
+        </div>
+        <div>
+            <p><strong>Social</strong><br />Instagram · LinkedIn · YouTube</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="main.js?v=20260522c"></script>
+</body>
+
+</html>

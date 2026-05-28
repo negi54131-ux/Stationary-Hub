@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supplier Products | Stationery Hub</title>
+    <link rel="stylesheet" href="enhanced-stationery.css" />
+    <link rel="stylesheet" href="supplier-dashboard.css?v=20260526b" />
+    <link rel="stylesheet" href="supplier-dashboard-overrides.css?v=20260526a" />
+</head>
+
+<body class="page-supplier">
+    <svg class="svg-sprite" aria-hidden="true">
+        <symbol id="icon-products" viewBox="0 0 24 24">
+            <path d="M3 6h18v2H3V6zm0 5h12v2H3v-2zm0 5h18v2H3v-2z" />
+        </symbol>
+        <symbol id="icon-analytics" viewBox="0 0 24 24">
+            <path d="M3 13h2v6H3v-6zM8 8h2v11H8V8zM13 3h2v16h-2V3zM18 11h2v8h-2v-8z" />
+        </symbol>
+        <symbol id="icon-upload" viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zM11 16h2V8h3l-4-5-4 5h3v8z" />
+        </symbol>
+        <symbol id="icon-export" viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zM12 4l4 4h-3v6h-2V8H8l4-4z" />
+        </symbol>
+        <symbol id="icon-edit" viewBox="0 0 24 24">
+            <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z" />
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24">
+            <path
+                d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.3 9.18 12 2.88 5.71 4.29 4.29 10.59 10.6 16.88 4.29z" />
+        </symbol>
+        <symbol id="icon-support" viewBox="0 0 24 24">
+            <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" />
+        </symbol>
+    </svg>
+
+    <div class="supplier-hero">
+        <div>
+            <p class="eyebrow">Supplier Console</p>
+            <h1>Products</h1>
+            <p>Create, edit, and manage your complete product catalog.</p>
+        </div>
+    </div>
+
+    <main class="supplier-wrap">
+        <section class="supplier-card supplier-loading" id="supplier-loading">
+            <div class="loading-title">Loading supplier dashboard…</div>
+            <div class="loading-sub">Please wait while we verify access.</div>
+        </section>
+
+        <section class="supplier-card" id="supplier-login-card" hidden>
+            <h2>Supplier Login</h2>
+            <form id="supplier-login-form" class="supplier-form">
+                <label>Email<input type="email" id="supplier-email" maxlength="25" required /></label>
+                <label>Password<input type="password" id="supplier-password" maxlength="20" required /></label>
+                <button class="primary" type="submit">Sign in</button>
+                <p class="form-hint" id="supplier-login-message"></p>
+            </form>
+        </section>
+
+        <section class="supplier-card" id="supplier-dashboard" hidden>
+            <div class="supplier-shell">
+                <aside class="supplier-sidebar">
+                    <div class="supplier-brand">
+                        <div class="supplier-brand-mark">S</div>
+                        <div>
+                            <h3>Stationery Hub</h3>
+                            <p class="muted">Smooth inventory control</p>
+                        </div>
+                    </div>
+
+                    <nav class="supplier-nav-links" aria-label="Dashboard navigation">
+                        <a href="/supplier.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-analytics"></use>
+                            </svg>Overview</a>
+                        <a href="/supplier-products.html" class="active" aria-current="page"><svg class="icon"
+                                aria-hidden="true">
+                                <use href="#icon-products"></use>
+                            </svg>Products</a>
+                        <a href="/supplier-pricing.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-save"></use>
+                            </svg>Pricing</a>
+                        <a href="/supplier-payments.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-payments"></use>
+                            </svg>Payments</a>
+                        <a href="/supplier-returns.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-close"></use>
+                            </svg>Returns</a>
+                        <a href="/supplier-orders.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-analytics"></use>
+                            </svg>Orders</a>
+                        <a href="/supplier-csv.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-upload"></use>
+                            </svg>CSV Import</a>
+                        <a href="/supplier-tickets.html"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-support"></use>
+                            </svg>Support &amp; Help</a>
+                    </nav>
+
+                    <div class="supplier-sidebar-card">
+                        <p class="muted">Quick stats</p>
+                        <div class="sidebar-stat"><span>Products</span><strong id="supplier-count-products">0</strong>
+                        </div>
+                        <div class="sidebar-stat"><span>Orders</span><strong id="supplier-count-orders">0</strong></div>
+                        <div class="sidebar-stat"><span>Revenue</span><strong id="supplier-revenue">₹0</strong></div>
+                        <div class="sidebar-stat"><span>Pending</span><strong id="supplier-pending">0</strong></div>
+                    </div>
+
+                    <div class="supplier-header-actions sidebar-actions">
+                        <button id="supplier-back" class="ghost">Back</button>
+                        <button id="supplier-logout" class="ghost">Logout</button>
+                    </div>
+                </aside>
+
+                <div class="supplier-content">
+                    <div class="supplier-header modern">
+                        <div class="supplier-header-left">
+                            <h2>Product Management</h2>
+                            <p class="muted">Search, edit and maintain your inventory</p>
+                        </div>
+                    </div>
+
+                    <div class="compact-stats-strip">
+                        <div class="compact-stat">
+                            <span>Products</span>
+                            <strong id="products-strip-count">0</strong>
+                        </div>
+                        <div class="compact-stat">
+                            <span>Avg Order</span>
+                            <strong id="supplier-aov">₹0</strong>
+                        </div>
+                    </div>
+
+                    <div class="supplier-controls" id="supplier-import-area">
+                        <div class="search-area">
+                            <input id="supplier-search-input" placeholder="Search products or categories..."
+                                aria-label="Search products or categories" />
+                            <select id="products-category-filter" aria-label="Filter products by category">
+                                <option value="all">Categories</option>
+                            </select>
+                            <button id="supplier-search-clear" class="ghost">Clear</button>
+                        </div>
+                        <div class="import-area">
+                            <button id="supplier-export-csv" class="ghost btn-icon"><svg class="icon"
+                                    aria-hidden="true">
+                                    <use href="#icon-export"></use>
+                                </svg>Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div class="products-view-toggle" id="products-view-toggle" role="tablist"
+                        aria-label="Products view selector">
+                        <button class="ghost active" data-product-view="list" role="tab"
+                            aria-selected="true">List</button>
+                        <button class="ghost" data-product-view="form" role="tab" aria-selected="false">Add
+                            Product</button>
+                    </div>
+
+                    <div class="supplier-grid modern-grid products-split-grid">
+                        <div class="panel panel-form" data-product-view-panel="form" hidden>
+                            <h3>Add / Update Product</h3>
+                            <form id="supplier-product-form" class="supplier-form compact">
+                                <input type="hidden" id="product-id" />
+                                <div class="form-row"><label>Product name<input type="text" id="product-name"
+                                            required /></label></div>
+                                <div class="form-row"><label>Category<input type="text" id="product-category"
+                                            required /></label></div>
+                                <div class="form-row two-cols">
+                                    <label>MRP<input type="number" id="product-mrp" min="1" step="0.01"
+                                            required /></label>
+                                    <label>Selling Price<input type="number" id="product-price" min="1" step="0.01"
+                                            required /></label>
+                                    <label>Stock<input type="number" id="product-stock" min="0" step="1"
+                                            value="0" /></label>
+                                </div>
+                                <p class="form-hint" id="product-discount-preview" style="margin-top: -2px;">
+                                    Discount preview will appear here.
+                                </p>
+                                <div class="form-row">
+                                    <label>Select Product Images (Multiple allowed)
+                                        <input type="file" id="product-images" multiple accept="image/*"
+                                            style="padding: 8px; border: 1.5px dashed var(--border); border-radius: 6px; background: #fafafa; cursor: pointer;" />
+                                    </label>
+                                </div>
+                                <div id="product-images-preview"
+                                    style="display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0;"></div>
+                                <div class="form-row"><label>Description<textarea id="product-description"
+                                            rows="3"></textarea></label></div>
+                                <div class="form-row"><label class="checkbox"><input type="checkbox"
+                                            id="product-featured" /> Featured on homepage</label></div>
+                                <div class="form-actions">
+                                    <button class="primary" type="submit">Save product</button>
+                                    <button class="ghost" type="button" id="product-reset">Clear</button>
+                                </div>
+                                <p class="form-hint" id="product-form-message"></p>
+                            </form>
+                        </div>
+
+                        <div class="panel panel-list" id="supplier-products" data-product-view-panel="list">
+                            <h3>Products <span class="muted" id="product-list-sub">(quick edit available)</span></h3>
+                            <div id="inline-edit-error" class="inline-error-banner" role="status" hidden></div>
+                            <div id="supplier-product-list" class="supplier-list modern-list"></div>
+                            <div class="product-pagination" id="product-pagination">
+                                <button id="product-prev" class="ghost">Prev</button>
+                                <span id="product-page-info">Page 1</span>
+                                <button id="product-next" class="ghost">Next</button>
+                                <select id="product-page-size">
+                                    <option value="8">8</option>
+                                    <option value="12" selected>12</option>
+                                    <option value="24">24</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <div id="supplier-mapping-modal" class="modal" role="dialog" aria-modal="true"
+        aria-labelledby="supplier-mapping-title" hidden>
+        <div class="modal-content">
+            <h3 id="supplier-mapping-title">Map CSV columns to product fields</h3>
+            <div id="mapping-rows"></div>
+            <div class="mapping-actions">
+                <button id="supplier-auto-map" class="ghost">Auto-map</button>
+                <button id="supplier-validate-map" class="ghost">Validate</button>
+                <button id="supplier-import-mapped" class="primary">Import Mapped</button>
+                <button id="supplier-close-map" class="ghost">Close</button>
+            </div>
+            <div id="mapping-errors" class="errors" role="status"></div>
+        </div>
+    </div>
+    <div id="toast-save" class="toast-save" role="status" aria-live="polite"></div>
+    <script src="supplier.js"></script>
+</body>
+
+</html>

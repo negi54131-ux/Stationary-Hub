@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login to your Stationery Hub account" />
+    <title>Login | Stationery Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=General+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="enhanced-stationery.css?v=20260408a" />
+</head>
+
+<body class="auth-body">
+    <header class="topbar">
+        <div class="brand mega-brand">
+            <span class="brand-pill">EST. 2026</span>
+            <span class="brand-name">Stationery Hub</span>
+        </div>
+        <div class="actions mega-actions">
+            <a class="ghost" href="/">Home</a>
+            <a class="ghost" href="/register">Register</a>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <section class="auth-split" aria-label="Login area">
+            <article class="auth-highlight">
+                <p class="eyebrow">Welcome back</p>
+                <h2>Log in and continue your shopping flow.</h2>
+                <p class="muted">Track orders, save addresses, and checkout faster with your account.</p>
+            </article>
+
+            <section class="auth-card" aria-labelledby="login-title">
+                <h1 id="login-title">Sign in</h1>
+                <p class="muted">Use your registered email and password.</p>
+                <form id="login-form" class="auth-form" autocomplete="on" aria-describedby="login-feedback">
+                    <label for="login-email">Email</label>
+                    <input id="login-email" name="email" type="email" maxlength="25" placeholder="you@example.com"
+                        required autocomplete="username" />
+                    <label for="login-password">Password</label>
+                    <div class="password-wrap">
+                        <input id="login-password" name="password" type="password" maxlength="20" placeholder="••••••••"
+                            required autocomplete="current-password" />
+                        <button type="button" class="password-toggle" id="login-password-toggle"
+                            aria-controls="login-password" aria-label="Show password">Show</button>
+                    </div>
+                    <button class="primary block" type="submit">Login</button>
+                </form>
+                <p id="login-feedback" class="form-feedback" role="alert" aria-live="polite"></p>
+                <p class="muted">New here? <a class="link" href="/register">Create an account</a>.</p>
+            </section>
+        </section>
+    </main>
+
+    <script defer>
+        const loginForm = document.getElementById("login-form");
+        const loginFeedback = document.getElementById("login-feedback");
+        const loginButton = loginForm.querySelector("button[type='submit']");
+        const loginPassword = document.getElementById("login-password");
+        const loginPasswordToggle = document.getElementById("login-password-toggle");
+
+        // Accessibility: focus feedback on error
+        function showFeedback(msg, type = "error") {
+            loginFeedback.textContent = msg;
+            loginFeedback.className = type ? "form-feedback " + type : "form-feedback";
+            if (type === "error") loginFeedback.focus && loginFeedback.focus();
+        }
+
+        function togglePassword(input, toggleButton) {
+            if (!input || !toggleButton) return;
+            const nextType = input.type === "password" ? "text" : "password";
+            input.type = nextType;
+            const isHidden = nextType === "password";
+            toggleButton.textContent = isHidden ? "Show" : "Hide";
+            toggleButton.setAttribute("aria-label", isHidden ? "Show password" : "Hide password");
+        }
+
+        const handleLogin = async (event) => {
+            event.preventDefault();
+            showFeedback("", "");
+            loginButton.disabled = true;
+            const originalLabel = loginButton.textContent;
+            loginButton.textContent = "Logging in...";
+            const formData = new FormData(loginForm);
+            const payload = {
+                email: String(formData.get("email") || "").trim(),
+                password: String(formData.get("password") || ""),
+            };
+            try {
+                const res = await fetch("/api/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    throw new Error(data.message || "Unable to login. Please try again.");
+                }
+                localStorage.setItem("token", data.token);
+                // Save userEmail so supplier nav visibility works on redirect
+                if (data.user && data.user.email) {
+                    localStorage.setItem("userEmail", data.user.email);
+                }
+                showFeedback("Login successful. Redirecting...", "success");
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 600);
+            } catch (err) {
+                showFeedback(err.message, "error");
+            } finally {
+                loginButton.disabled = false;
+                loginButton.textContent = originalLabel;
+            }
+        };
+
+        loginForm.addEventListener("submit", handleLogin);
+        loginPasswordToggle.addEventListener("click", () => togglePassword(loginPassword, loginPasswordToggle));
+    </script>
+</body>
+
+</html>
